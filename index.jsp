@@ -2,19 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Politeknik Sukabumi</title>
+		<title>Aplikasi Pengajuan TA | Login</title>
                 <link rel="shortcut icon" href="img/poltek.ico" >
 		<meta name="description" content="description">
-		<meta name="author" content="DevOOPS">
+		<meta name="author" content="Evgeniya">
+		<meta name="keyword" content="keywords">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="plugins/bootstrap/bootstrap.css" rel="stylesheet">
-		<link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-		<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<link rel="stylesheet" href="font-awesome-4.3.0/css/font-awesome.min.css">
 		<link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
-		<link href="plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
-		<link href="plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-		<link href="plugins/xcharts/xcharts.min.css" rel="stylesheet">
-		<link href="plugins/select2/select2.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -23,195 +19,49 @@
 		<![endif]-->
 	</head>
 <body>
-<!--Start Header-->
-<div id="screensaver">
-	<canvas id="canvas"></canvas>
-	<i class="fa fa-lock" id="screen_unlock"></i>
-</div>
-<div id="modalbox">
-	<div class="devoops-modal">
-		<div class="devoops-modal-header">
-			<div class="modal-header-name">
-				<span>Basic table</span>
-			</div>
-			<div class="box-icons">
-				<a class="close-link">
-					<i class="fa fa-times"></i>
-				</a>
-			</div>
-		</div>
-		<div class="devoops-modal-inner">
-		</div>
-		<div class="devoops-modal-bottom">
-		</div>
-	</div>
-</div>
-<header class="navbar">
-	<div class="container-fluid expanded-panel">
-		<div class="row">
-			<div id="logo" class="col-xs-12 col-sm-2">
-				<a href="index.html">Halaman Mahasiswa</a>
-			</div>
-			<div id="top-panel" class="col-xs-12 col-sm-10">
-				<div class="row">
-					<div class="col-xs-8 col-sm-4">
-						<a href="#" class="show-sidebar">
-						  <i class="fa fa-bars"></i>
-						</a>
-						<div id="search">
-							<input type="text" placeholder="search"/>
-							<i class="fa fa-search"></i>
-						</div>
+    <% 
+        if (request.getParameter("act")==null){
+            out.println("");
+        }
+        else if (request.getParameter("act").equals("gagal")){
+            %>
+                <div class="alert alert-danger alert-dismissable">
+                Login gagal, Username atau Password salah. <a href="index.jsp" class="alert-link"><i class="fa fa-times"></i></a>
+                </div>
+            <%
+        }
+    %>
+    
+<div class="container-fluid">
+	<div id="page-login" class="row">
+		<div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+			<div class="box">
+				<div class="box-content">
+					<div class="text-center">
+						<h3 class="page-header">Aplikasi Pengajuan TA | Login</h3>
 					</div>
-					<div class="col-xs-4 col-sm-8 top-panel-right">
-						<ul class="nav navbar-nav pull-right panel-menu">
-							<li class="hidden-xs">
-								<a href="index.html" class="modal-link">
-									<i class="fa fa-bell"></i>
-									<span class="badge">7</span>
-								</a>
-							</li>
-							<li class="hidden-xs">
-								<a class="ajax-link" href="ajax/calendar.html">
-									<i class="fa fa-calendar"></i>
-									<span class="badge">7</span>
-								</a>
-							</li>
-							<li class="hidden-xs">
-								<a href="ajax/page_messages.html" class="ajax-link">
-									<i class="fa fa-envelope"></i>
-									<span class="badge">7</span>
-								</a>
-							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle account" data-toggle="dropdown">
-									<div class="avatar">
-										<img src="img/avatar.jpg" class="img-rounded" alt="avatar" />
-									</div>
-									<i class="fa fa-angle-down pull-right"></i>
-									<div class="user-mini pull-right">
-										<span class="welcome">Welcome,</span>
-										<span>Jane Devoops</span>
-									</div>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="#">
-											<i class="fa fa-user"></i>
-											<span>Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="ajax/page_messages.html" class="ajax-link">
-											<i class="fa fa-envelope"></i>
-											<span>Messages</span>
-										</a>
-									</li>
-									<li>
-										<a href="ajax/gallery_simple.html" class="ajax-link">
-											<i class="fa fa-picture-o"></i>
-											<span>Albums</span>
-										</a>
-									</li>
-									<li>
-										<a href="ajax/calendar.html" class="ajax-link">
-											<i class="fa fa-tasks"></i>
-											<span>Tasks</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-cog"></i>
-											<span>Settings</span>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<i class="fa fa-power-off"></i>
-											<span>Logout</span>
-										</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
+                                    <form role="form" method="post" action="proses.jsp?act=login">
+					<div class="form-group">
+						<label class="control-label">Username</label>
+						<input type="text" class="form-control" name="user" required>
 					</div>
+					<div class="form-group">
+						<label class="control-label">Password</label>
+						<input type="password" class="form-control" name="pass" required>
+					</div>
+					<div class="text-center">
+						<input type="submit" value="Login" class="btn btn-primary">
+					</div>
+                                        </form>
 				</div>
 			</div>
 		</div>
 	</div>
-</header>
-<!--End Header-->
-<!--Start Container-->
-<div id="main" class="container-fluid">
-	<div class="row">
-		<div id="sidebar-left" class="col-xs-2 col-sm-2">
-			<ul class="nav main-menu">
-				<li>
-					<a href="index.jsp?link=mhs">
-						<i class="fa fa-dashboard"></i>
-						<span class="hidden-xs">Dashboard</span>
-					</a>
-				</li>
-				<li>
-					 <a href="index.jsp?link=mhs">
-						 <i class="fa fa-ban"></i>
-						 <span class="hidden-xs">Error</span>
-					</a>
-				</li>
-				 <li>
-					<a href="index.jsp?link=calendar">
-						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">Calendar</span>
-					</a>
-				 </li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle">
-						<i class="fa fa-picture-o"></i>
-						 <span class="hidden-xs">Multilevel menu</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">First level menu</a></li>
-						<li><a href="#">First level menu</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">
-								<i class="fa fa-plus-square"></i>
-								<span class="hidden-xs">Second level menu group</span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Second level menu</a></li>
-								<li><a href="#">Second level menu</a></li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		<!--Start Content-->
-		<div id="content" class="col-xs-12 col-sm-10">
-                    <div class="preloader">
-				<img src="img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
-                    </div>
-                        <%
-                            String li=request.getParameter("link");
-                        %>
-                        <jsp:include page="link1.jsp" flush="true">
-                        <jsp:param name="menu" value="<%=li%>"/>
-                        </jsp:include>
-		</div>
-		<!--End Content-->
-	</div>
 </div>
-<!--End Container-->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--<script src="http://code.jquery.com/jquery.js"></script>-->
-<script src="plugins/jquery/jquery-2.1.0.min.js"></script>
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="plugins/bootstrap/bootstrap.min.js"></script>
-<script src="plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
-<script src="plugins/tinymce/tinymce.min.js"></script>
-<script src="plugins/tinymce/jquery.tinymce.min.js"></script>
-<!-- All functions for this theme + document.ready processing -->
-<script src="js/devoops.js"></script>
+    
+    <script>
+    $("#commentForm").validate();
+    </script>
+    
 </body>
 </html>
