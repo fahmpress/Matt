@@ -13,7 +13,7 @@
         session.setAttribute("sessionakses",rs.getString("akses"));
         response.sendRedirect("loginverifikasi.jsp");
         }else{
-        response.sendRedirect("index.jsp?act=gagal");
+        response.sendRedirect("index.jsp?login=gagal");
         }
     }
 %>

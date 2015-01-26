@@ -20,10 +20,10 @@
 	</head>
 <body>
     <% 
-        if (request.getParameter("act")==null){
+        if (request.getParameter("login")==null){
             out.println("");
         }
-        else if (request.getParameter("act").equals("gagal")){
+        else if (request.getParameter("login").equals("gagal")){
             %>
                 <div class="alert alert-danger alert-dismissable">
                 Login gagal, Username atau Password salah. <a href="index.jsp" class="alert-link"><i class="fa fa-times"></i></a>

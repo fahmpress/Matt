@@ -1,13 +1,14 @@
 <%
     String akses = (String)session.getAttribute("sessionakses");
+    String menu = request.getParameter("link");
     
     if(akses.equals("admin")){
-        if(request.getParameter("link").equals("adm")){
+        if(menu.equals("adm")){
             %>
             <%@include file="module/admin/admin.jsp" %> 
             <%
         }
-        else if(request.getParameter("link").equals("test")){
+        else if(menu.equals("test")){
             %>
             <%@include file="module/mhs/mhs.jsp" %> 
             <%
@@ -15,13 +16,13 @@
     }
     
     if(akses.equals("kajur")){
-        if(request.getParameter("link").equals("kajur")){
+        if(menu.equals("kajur")){
             %>
             <%@include file="module/kajur/kajur.jsp" %> 
             <%
             }
     
-        else if(request.getParameter("link").equals("test")){
+        else if(menu.equals("test")){
             %>
             <%@include file="module/mhs/mhs.jsp" %> 
             <%
@@ -29,13 +30,13 @@
     }
     
     if(akses.equals("mahasiswa")){
-        if(request.getParameter("link").equals("mhs")){
+        if(menu.equals("mhs")){
             %>
             <%@include file="module/mhs/mhs.jsp" %> 
             <%
             }
     
-        else if(request.getParameter("link").equals("test")){
+        else if(menu.equals("test")){
             %>
             <%@include file="module/mhs/mhs.jsp" %> 
             <%

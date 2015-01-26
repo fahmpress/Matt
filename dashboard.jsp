@@ -152,24 +152,39 @@ response.sendRedirect("index.jsp"); }
 	<div class="row">
 		<div id="sidebar-left" class="col-xs-2 col-sm-2">
 			<ul class="nav main-menu">
-				<li>
+                            <%
+                                if(session.getAttribute("sessionakses").equals("admin")){
+                                    %>
+                                    <li>
+					<a href="dashboard.jsp?link=adm">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span class="hidden-xs">Dashboard adm</span>
+					</a>
+                                    </li>
+                                    <%}%>
+                                    
+                            <%
+                                if(session.getAttribute("sessionakses").equals("kajur")){
+                                    %>
+                                    <li>
+					<a href="dashboard.jsp?link=kajur">
+                                            <i class="fa fa-dashboard"></i>
+                                            <span class="hidden-xs">Dashboard kajur</span>
+					</a>
+                                    </li>
+                                    <%}%>
+                            
+                            <%
+                                if(session.getAttribute("sessionakses").equals("mahasiswa")){
+                                    %>
+                                    <li>
 					<a href="dashboard.jsp?link=mhs">
-						<i class="fa fa-dashboard"></i>
-						<span class="hidden-xs">Dashboard</span>
+                                            <i class="fa fa-dashboard"></i>
+                                            <span class="hidden-xs">Dashboard mhs</span>
 					</a>
-				</li>
-				<li>
-					 <a href="dashboard.jsp?link=mhs">
-						 <i class="fa fa-ban"></i>
-						 <span class="hidden-xs">Error</span>
-					</a>
-				</li>
-				 <li>
-					<a href="dashboard.jsp?link=calendar">
-						 <i class="fa fa-calendar"></i>
-						 <span class="hidden-xs">Calendar</span>
-					</a>
-				 </li>
+                                    </li>
+                                    <%}%>
+                                    
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle">
 						<i class="fa fa-picture-o"></i>
